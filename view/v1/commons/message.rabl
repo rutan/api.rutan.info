@@ -1,0 +1,2 @@
+node(:message) { @message }
+
