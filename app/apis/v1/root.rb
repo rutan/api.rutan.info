@@ -3,7 +3,7 @@ module RutanAPI
     class Root < Grape::API
       version 'v1', using: :path
 
-      namespace :help do
+      namespace :helps do
         resource :ping do
           get rabl: 'v1/commons/message.rabl' do
             @message = 'hoge'

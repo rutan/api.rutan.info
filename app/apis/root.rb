@@ -1,4 +1,4 @@
-require 'rutan_api/v1/root'
+require 'apis/v1/root'
 
 module RutanAPI
   class Root < Grape::API

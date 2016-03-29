@@ -3,13 +3,13 @@ require 'rexml/document'
 require 'json'
 Bundler.require
 
-$: << File.expand_path('../src', __FILE__)
+$: << File.expand_path('../app', __FILE__)
 
 use Rack::Config do |env|
-  env['api.tilt.root'] = File.expand_path('../view', __FILE__)
+  env['api.tilt.root'] = File.expand_path('../app/views', __FILE__)
 end
 
-require 'rutan_api/root'
+require 'apis/root'
 
 run RutanAPI::Root
 
