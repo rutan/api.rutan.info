@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'grape', '0.15.0'
+gem 'grape', '0.16.1'
 gem 'grape-rabl'
 
 gem 'nori'
