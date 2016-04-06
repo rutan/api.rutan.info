@@ -1,15 +1,11 @@
+require 'apis/v1/utils/shuffle_name'
+require 'apis/v1/helps/ping'
+
 module RutanAPI
   module V1
     class Root < Grape::API
-      version 'v1', using: :path
-
-      namespace :helps do
-        resource :ping do
-          get rabl: 'commons/message.rabl' do
-            @message = 'pong'
-          end
-        end
-      end
+      mount RutanAPI::V1::Utils::ShuffleName
+      mount RutanAPI::V1::Helps::Ping
     end
   end
 end

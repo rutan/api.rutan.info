@@ -11,7 +11,9 @@ module RutanAPI
     ALLOW_FORMATS = %w(json xml)
 
     before do
-      unless ALLOW_FORMATS.include?(params[:format].to_s)
+      next if params.nil? && env.nil?
+
+      unless ALLOW_FORMATS.include?((params[:format] || env['api.format']).to_s)
         params[:format] = :json
         env['api.format'] = :json
         error!("require extension [#{ALLOW_FORMATS.join(', ')}]", 400)
