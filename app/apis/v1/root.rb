@@ -5,7 +5,7 @@ module RutanAPI
 
       namespace :helps do
         resource :ping do
-          get rabl: 'v1/commons/message.rabl' do
+          get rabl: 'commons/message.rabl' do
             @message = 'pong'
           end
         end

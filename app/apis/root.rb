@@ -8,15 +8,21 @@ module RutanAPI
     error_formatter :xml, RutanAPI::ErrorFormatter
     error_formatter :json, RutanAPI::ErrorFormatter
 
+    ALLOW_FORMATS = %w(json xml)
+
     before do
-      # 拡張子無しのリクエストやめてほしい
-      unless params[:format]
-        params[:format] = 'xml'
-        error!('require extension xml or json.', 400)
+      unless ALLOW_FORMATS.include?(params[:format].to_s)
+        params[:format] = :json
+        env['api.format'] = :json
+        error!("require extension [#{ALLOW_FORMATS.join(', ')}]", 400)
       end
     end
 
     mount RutanAPI::V1::Root
+
+    route :any, '*path' do
+      error!('not found', 404)
+    end
   end
 end
 
